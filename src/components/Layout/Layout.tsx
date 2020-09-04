@@ -7,9 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import LinkItem from './components/LinkItem';
+import { LinkItem } from './components';
 
-const drawerWidth = 200;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,7 +43,7 @@ const Layout: FC = ({ children }) => {
     <div className={classes.root}>
       <AppBar position='fixed' className={classes.appBar}>
         <Toolbar>
-          <Typography variant='h5' noWrap>
+          <Typography variant='h4' noWrap>
             SMSGlobal Message
           </Typography>
         </Toolbar>

@@ -7,7 +7,7 @@ import { Omit } from '@material-ui/types';
 
 import { ListItemProps } from 'components/types/listItem.types';
 
-const LinkItem: FC<ListItemProps> = ({ icon, primary, to }) => {
+export const LinkItem: FC<ListItemProps> = ({ icon, primary, to }) => {
   const renderLink = useMemo(
     () =>
       React.forwardRef<any, Omit<LinkProps, 'to'>>((itemProps, ref) => (
@@ -25,5 +25,3 @@ const LinkItem: FC<ListItemProps> = ({ icon, primary, to }) => {
     </li>
   );
 };
-
-export default LinkItem;
