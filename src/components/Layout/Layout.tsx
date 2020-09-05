@@ -6,6 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import SettingsIcon from '@material-ui/icons/Settings';
+import ChatIcon from '@material-ui/icons/Chat';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 import { LinkItem } from './components';
 
@@ -58,6 +60,12 @@ const Layout: FC = ({ children }) => {
         <div className={classes.drawerContainer}>
           <List>
             <LinkItem to='/setting' primary='Setting' icon={<SettingsIcon />} />
+            <LinkItem to='/message' primary='Message' icon={<ChatIcon />} />
+            <LinkItem
+              to='/report'
+              primary='Setting'
+              icon={<AssessmentIcon />}
+            />
           </List>
         </div>
       </Drawer>
