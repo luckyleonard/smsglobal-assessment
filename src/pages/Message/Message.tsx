@@ -37,7 +37,7 @@ const Message: FC = () => {
   const count = messageBody.message.length;
   const messageReminder =
     count <= 160
-      ? `${160 - count} chars left for message 1`
+      ? `${160 - count} chars left for one message`
       : `Message will be send in ${Math.ceil(count / 160)} parts`;
 
   return (

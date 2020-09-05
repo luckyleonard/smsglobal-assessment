@@ -1,8 +1,6 @@
 export type ActionTypes = {
   type: string;
-  payload: {
-    [key: string]: any;
-  };
+  [key: string]: any;
 };
 
 export type SettingTypes = {
