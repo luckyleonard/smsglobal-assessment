@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Setting from './Setting';
+import Message from './Message';
 
 const AppRouter: FC = () => {
   return (
@@ -12,7 +13,7 @@ const AppRouter: FC = () => {
             <Setting />
           </Route>
           <Route path='/message'>
-            <div>Message</div>
+            <Message />
           </Route>
           <Route path='/report'>
             <div>Report</div>
