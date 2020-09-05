@@ -20,6 +20,11 @@ const Setting: FC = () => {
 
   const handleToggleOpen = () => {
     setOpenDialog((prevState) => !prevState);
+    setApiSetting({
+      apiKey: '',
+      apiSecret: '',
+      displayName: '',
+    });
   };
 
   return (

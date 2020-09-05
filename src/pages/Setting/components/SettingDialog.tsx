@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import { SettingTypes } from 'types/reduxTypes';
 import { setApiKeyAction } from 'redux/actions/setting';
 
-type SettingDialogTypes = {
+export type SettingDialogTypes = {
   openDialog: boolean;
   apiSetting: SettingTypes;
   handleToggleOpen: () => void;
@@ -23,13 +23,52 @@ type SettingDialogTypes = {
 
 export const SettingDialog: FC<SettingDialogTypes> = ({
   openDialog,
-  handleToggleOpen,
   apiSetting,
+  handleToggleOpen,
   handleApiChange,
 }) => {
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({
+    keyError: '',
+    secretError: '',
+    nameError: '',
+  });
+
+  const validator = (setting: SettingTypes) => {
+    let error = false;
+    if (!setting.apiKey) {
+      setErrors((prevState) => ({
+        ...prevState,
+        keyError: 'Please input your API key',
+      }));
+      error = true;
+    }
+    if (!setting.apiSecret) {
+      setErrors((prevState) => ({
+        ...prevState,
+        secretError: 'Please input your API secret',
+      }));
+      error = true;
+    }
+    if (!setting.displayName) {
+      setErrors((prevState) => ({
+        ...prevState,
+        nameError: 'Please input display name',
+      }));
+      error = true;
+    }
+    return error;
+  };
 
   const handleSubmit = () => {
+    if (validator(apiSetting)) {
+      return;
+    }
+    setErrors({
+      keyError: '',
+      secretError: '',
+      nameError: '',
+    });
     dispatch(setApiKeyAction(apiSetting));
     handleToggleOpen();
   };
@@ -50,22 +89,26 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
           </DialogContentText>
           <form>
             <TextField
-              label='Api Key'
+              label='API Key'
               fullWidth
               required
               margin='normal'
               value={apiSetting.apiKey}
               name='apiKey'
               onChange={handleApiChange}
+              error={errors.keyError !== ''}
+              helperText={errors.keyError}
             />
             <TextField
-              label='Api Secret'
+              label='API Secret'
               fullWidth
               required
               margin='normal'
               value={apiSetting.apiSecret}
               name='apiSecret'
               onChange={handleApiChange}
+              error={errors.secretError !== ''}
+              helperText={errors.secretError}
             />
             <TextField
               label='Display Name'
@@ -75,6 +118,8 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
               value={apiSetting.displayName}
               name='displayName'
               onChange={handleApiChange}
+              error={errors.nameError !== ''}
+              helperText={errors.nameError}
             />
           </form>
         </DialogContent>
