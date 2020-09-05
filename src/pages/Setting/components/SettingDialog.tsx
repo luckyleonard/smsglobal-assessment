@@ -13,13 +13,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { SettingTypes } from 'types/reduxTypes';
 import { setApiKeyAction } from 'redux/actions/setting';
-
-export type SettingDialogTypes = {
-  openDialog: boolean;
-  apiSetting: SettingTypes;
-  handleToggleOpen: () => void;
-  handleApiChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
+import { SettingDialogTypes } from '../../types/SettingDialog.type';
 
 export const SettingDialog: FC<SettingDialogTypes> = ({
   openDialog,
@@ -124,7 +118,7 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleSubmit} color='primary'>
+          <Button onClick={handleSubmit} color='primary' variant='contained'>
             Confirm
           </Button>
         </DialogActions>

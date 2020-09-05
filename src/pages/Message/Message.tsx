@@ -34,6 +34,11 @@ const Message: FC = () => {
   const handleSubmit = () => {
     dispatch(sendMessage(messageBody));
   };
+  const count = messageBody.message.length;
+  const messageReminder =
+    count <= 160
+      ? `${160 - count} chars left for message 1`
+      : `Message will be send in ${Math.ceil(count / 160)} parts`;
 
   return (
     <Paper>
@@ -46,15 +51,18 @@ const Message: FC = () => {
             value={messageBody.origin}
             name='origin'
             onChange={handleMessageChange}
+            helperText='(Optional)'
           />
           <TextField
             label='To'
             fullWidth
             required
+            type='number'
             margin='normal'
             value={messageBody.destination}
             name='destination'
             onChange={handleMessageChange}
+            helperText='Please input valid number'
           />
           <TextField
             label='Message'
@@ -66,6 +74,7 @@ const Message: FC = () => {
             value={messageBody.message}
             name='message'
             onChange={handleMessageChange}
+            helperText={messageReminder}
           />
         </form>
         <Button onClick={handleSubmit} color='primary' variant='contained'>

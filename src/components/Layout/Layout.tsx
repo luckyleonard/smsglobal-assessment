@@ -61,11 +61,7 @@ const Layout: FC = ({ children }) => {
           <List>
             <LinkItem to='/setting' primary='Setting' icon={<SettingsIcon />} />
             <LinkItem to='/message' primary='Message' icon={<ChatIcon />} />
-            <LinkItem
-              to='/report'
-              primary='Setting'
-              icon={<AssessmentIcon />}
-            />
+            <LinkItem to='/report' primary='Report' icon={<AssessmentIcon />} />
           </List>
         </div>
       </Drawer>
