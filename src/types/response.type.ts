@@ -1,4 +1,4 @@
-export type messagesType = {
+export type MessagesType = {
   id: number;
   outgoing_id: number;
   origin: string;
@@ -8,9 +8,9 @@ export type messagesType = {
   dateTime: string;
 };
 
-export type reponseType = {
+export type ResponseMessageType = {
   total: number;
   offset: number;
   limit: number;
-  messages: messagesType[];
+  messages: MessagesType[];
 };
