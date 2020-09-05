@@ -3,20 +3,24 @@ import { getSetting } from './../selectors/index';
 import {
   sendMessageFail,
   sendMessageSuccess,
+  preSendMessage,
   getMessageFailure,
   getMessageSuccess,
 } from './../actions/message';
-import { sendMessageApi } from 'helpers/apiRequest';
+import { sendMessageRequest, getMessagesRequest } from 'helpers/apiRequest';
 import { ActionTypes } from 'types/reduxTypes';
 import { MessageType } from 'pages/types/Message.type';
-import { SEND_MESSAGE_REQUESTED } from 'redux/actions/message';
+import {
+  SEND_MESSAGE_REQUESTED,
+  GET_MESSAGE_REQUESTED,
+} from 'redux/actions/message';
 
 function* sendMessageWorker(action: ActionTypes): any {
-  console.log('run me');
   const { apiKey, apiSecret } = yield select(getSetting);
   try {
+    yield put(preSendMessage());
     const [error] = yield call(
-      sendMessageApi,
+      sendMessageRequest,
       action.payload as MessageType,
       apiKey,
       apiSecret
@@ -30,8 +34,26 @@ function* sendMessageWorker(action: ActionTypes): any {
   }
 }
 
+function* getMessagesWorker(action: ActionTypes): any {
+  const { apiKey, apiSecret } = yield select(getSetting);
+  try {
+    yield put(preSendMessage());
+    const [error, response] = yield call(getMessagesRequest, apiKey, apiSecret);
+    if (error) {
+      return yield put(getMessageFailure(error.response.data));
+    }
+    yield put(getMessageSuccess(response));
+  } catch (e) {
+    yield put(getMessageFailure(e));
+  }
+}
+
 function* sendMessageWatcher() {
   yield takeEvery(SEND_MESSAGE_REQUESTED, sendMessageWorker);
 }
 
-export const messageSaga = [sendMessageWatcher()];
+function* getMessagesWatcher() {
+  yield takeEvery(GET_MESSAGE_REQUESTED, getMessagesWorker);
+}
+
+export const messageSaga = [sendMessageWatcher(), getMessagesWatcher()];
