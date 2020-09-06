@@ -63,6 +63,32 @@ $ yarn run build
 
 - Powered by: [Netlify](https://www.netlify.com/)
 
+## Project Structure
+
+Only `src/` will be elaborated below.
+
+```
+# some folders/files had been omitted
+src/
+├── components/ # They are shared Components
+├── helpers/ # Helper functions
+├── pages/ # All page containers
+│   ├── Home/
+│   ├── Report/
+│   │   ├── components/ # Only used in this container
+│   │   └── index.ts
+│   └── Router.tsx # Routes config
+├── redux/ # https://github.com/rematch/rematch
+│   ├── actions/ # Action creator and Action types
+│   ├── reducers/
+│   ├── saga/ # To take care side effects
+│   ├── selectors/ # To selector state from redux store
+│   └── store.ts
+├── types/ # Centralized redux and fetch response types
+├── App.tsx
+└── index.tsx
+```
+
 ## Author
 
 - [DI ZHU(Leonard)](mailto:dzhu31@hotmail.com)
