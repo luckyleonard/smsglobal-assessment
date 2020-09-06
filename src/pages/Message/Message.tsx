@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { MessageType } from 'pages/types/Message.type';
+import { MessageBodyType } from 'pages/types/Message.type';
 import { sendMessage } from 'redux/actions/message';
 import { Grid } from '@material-ui/core';
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 const Message: FC = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [messageBody, setMessageBody] = useState<MessageType>({
+  const [messageBody, setMessageBody] = useState<MessageBodyType>({
     origin: '',
     destination: '',
     message: '',

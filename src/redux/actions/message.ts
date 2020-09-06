@@ -1,4 +1,4 @@
-import { MessageType } from 'pages/types/Message.type';
+import { MessageBodyType } from 'pages/types/Message.type';
 import { ResponseMessageType } from 'types/response.type';
 
 //action types
@@ -11,7 +11,7 @@ export const GET_MESSAGE_SUCCEEDED = 'GET_MESSAGE_SUCCEEDED';
 export const GET_MESSAGE_FAILED = 'GET_MESSAGE_FAILED';
 
 //action creators
-export const sendMessage = (messageBody: MessageType) => ({
+export const sendMessage = (messageBody: MessageBodyType) => ({
   type: SEND_MESSAGE_REQUESTED,
   payload: {
     origin: messageBody.origin,

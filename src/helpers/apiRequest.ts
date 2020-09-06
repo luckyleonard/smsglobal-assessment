@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { MessageType } from 'pages/types/Message.type';
+import { MessageBodyType } from 'pages/types/Message.type';
 import { getAuthorizationHeader } from './auth';
 
 export const sendMessageRequest = async (
-  payload: MessageType,
+  payload: MessageBodyType,
   apiKey: string,
   apiSecret: string
 ) => {

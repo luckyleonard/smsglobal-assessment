@@ -17,7 +17,7 @@ export const SettingCard: FC = () => {
         <Divider />
         <Typography variant='h6'>{setting.displayName}</Typography>
         <Typography variant='body1'>API key: {setting.apiKey}</Typography>
-        <Typography variant='body1'>API secret: {setting.apiKey}</Typography>
+        <Typography variant='body1'>API secret: {setting.apiSecret}</Typography>
       </CardContent>
     </Card>
   );

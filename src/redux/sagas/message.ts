@@ -9,7 +9,7 @@ import {
 } from './../actions/message';
 import { sendMessageRequest, getMessagesRequest } from 'helpers/apiRequest';
 import { ActionTypes } from 'types/reduxTypes';
-import { MessageType } from 'pages/types/Message.type';
+import { MessageBodyType } from 'pages/types/Message.type';
 import {
   SEND_MESSAGE_REQUESTED,
   GET_MESSAGE_REQUESTED,
@@ -21,7 +21,7 @@ function* sendMessageWorker(action: ActionTypes): any {
     yield put(preSendMessage());
     const [error] = yield call(
       sendMessageRequest,
-      action.payload as MessageType,
+      action.payload as MessageBodyType,
       apiKey,
       apiSecret
     );
