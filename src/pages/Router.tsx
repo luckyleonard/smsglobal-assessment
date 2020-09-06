@@ -5,6 +5,7 @@ import Setting from './Setting';
 import Message from './Message';
 import Report from './Report';
 import Home from './Home';
+import NotFound from './NotFound';
 
 const AppRouter: FC = () => {
   return (
@@ -24,7 +25,7 @@ const AppRouter: FC = () => {
             <Home />
           </Route>
           <Route path='/'>
-            <div>Not found</div>
+            <NotFound />
           </Route>
         </Switch>
       </Layout>

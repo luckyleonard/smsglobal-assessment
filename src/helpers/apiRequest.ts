@@ -34,7 +34,7 @@ export const sendMessageRequest = async (
 
 export const getMessagesRequest = async (apiKey: string, apiSecret: string) => {
   const host = 'api.smsglobal.com';
-  const uri = '/v2/sms/?limit=10';
+  const uri = '/v2/sms/';
   const method = 'GET';
   const authorizationHeader = getAuthorizationHeader(
     host,

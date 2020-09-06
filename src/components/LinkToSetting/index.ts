@@ -1,0 +1,1 @@
+export { LinkToSetting } from './LinkToSetting';
