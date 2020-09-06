@@ -4,15 +4,16 @@
 
 ## Overview
 
-SMSGlobal Coding Assessment is powered by Create React App with TypeScript
+SMSGlobal Coding Assessment is help you to send messages using SMSGlobal REST API.
+It is powered by Create React App with TypeScript.
 
 ## Online demo
 
-Click :point_right:
+Click :point_right: http://bit.ly/smsglobal-assessment
 
 ## Features
 
-- React Hooks + Redux(Saga) + React Router + Axios
+- React(Hooks) + Redux(Saga) + React Router + Axios + TypeScript
 - UI Library: Material-UI
 - Unit Test: Jest
 
@@ -30,8 +31,8 @@ Click :point_right:
 ### Installation
 
 ```sh
-$ git clone
-$ cd
+$ git clone https://github.com/luckyleonard/smsglobal-assessment.git
+$ cd smsglobal-assessment
 
 # Install frontend dependencies
 $ yarn
