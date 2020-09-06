@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Setting from './Setting';
 import Message from './Message';
+import Report from './Report';
+import Home from './Home';
 
 const AppRouter: FC = () => {
   return (
@@ -16,10 +18,10 @@ const AppRouter: FC = () => {
             <Message />
           </Route>
           <Route path='/report'>
-            <div>Report</div>
+            <Report />
           </Route>
           <Route exact path='/'>
-            <div>Home</div>
+            <Home />
           </Route>
           <Route path='/'>
             <div>Not found</div>
