@@ -8,12 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { MessageType } from 'pages/types/Message.type';
 import { sendMessage } from 'redux/actions/message';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
-    width: 600,
+    width: 500,
     padding: 30,
-    margin: '0 auto',
   },
 });
 
@@ -42,45 +42,51 @@ const Message: FC = () => {
 
   return (
     <Paper>
-      <Card className={classes.card}>
-        <form>
-          <TextField
-            label='From'
-            fullWidth
-            margin='normal'
-            value={messageBody.origin}
-            name='origin'
-            onChange={handleMessageChange}
-            helperText='(Optional)'
-          />
-          <TextField
-            label='To'
-            fullWidth
-            required
-            type='number'
-            margin='normal'
-            value={messageBody.destination}
-            name='destination'
-            onChange={handleMessageChange}
-            helperText='Please input valid number'
-          />
-          <TextField
-            label='Message'
-            fullWidth
-            required
-            multiline
-            rows={5}
-            margin='normal'
-            value={messageBody.message}
-            name='message'
-            onChange={handleMessageChange}
-            helperText={messageReminder}
-          />
-        </form>
-        <Button onClick={handleSubmit} color='primary' variant='contained'>
-          Send
-        </Button>
-      </Card>
+      <Grid
+        container
+        alignItems='center'
+        justify='center'
+        style={{ height: 500 }}>
+        <Card className={classes.card}>
+          <form>
+            <TextField
+              label='From'
+              fullWidth
+              margin='normal'
+              value={messageBody.origin}
+              name='origin'
+              onChange={handleMessageChange}
+              helperText='(Optional)'
+            />
+            <TextField
+              label='To'
+              fullWidth
+              required
+              type='number'
+              margin='normal'
+              value={messageBody.destination}
+              name='destination'
+              onChange={handleMessageChange}
+              helperText='Please input valid number'
+            />
+            <TextField
+              label='Message'
+              fullWidth
+              required
+              multiline
+              rows={5}
+              margin='normal'
+              value={messageBody.message}
+              name='message'
+              onChange={handleMessageChange}
+              helperText={messageReminder}
+            />
+          </form>
+          <Button onClick={handleSubmit} color='primary' variant='contained'>
+            Send
+          </Button>
+        </Card>
+      </Grid>
     </Paper>
   );
 };

@@ -11,7 +11,7 @@ import { getSetting } from 'redux/selectors/index';
 export const SettingCard: FC = () => {
   const setting = useSelector(getSetting);
   return (
-    <Card>
+    <Card style={{ width: 500, marginTop: 80 }}>
       <CardContent>
         <Typography variant='h5'>Saved API settings</Typography>
         <Divider />

@@ -8,6 +8,7 @@ export type SettingTypes = {
   apiKey: string;
   apiSecret: string;
   displayName: string;
+  hasSetting: boolean;
 };
 
 export type MessageTypes = {

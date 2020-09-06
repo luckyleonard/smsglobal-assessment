@@ -9,9 +9,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 
-import { SettingTypes } from 'types/reduxTypes';
+import { SettingInputTypes } from 'pages/types/Setting.type';
 import { setApiKeyAction } from 'redux/actions/setting';
 import { SettingDialogTypes } from '../../types/SettingDialog.type';
 
@@ -28,7 +27,7 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
     nameError: '',
   });
 
-  const validator = (setting: SettingTypes) => {
+  const validator = (setting: SettingInputTypes) => {
     let error = false;
     if (!setting.apiKey) {
       setErrors((prevState) => ({
@@ -63,12 +62,12 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
       secretError: '',
       nameError: '',
     });
-    dispatch(setApiKeyAction(apiSetting));
+    dispatch(setApiKeyAction({ ...apiSetting, hasSetting: true }));
     handleToggleOpen();
   };
 
   return (
-    <Grid container direction='column' alignItems='center'>
+    <>
       <Typography variant='h5' gutterBottom>
         REST API Keys
       </Typography>
@@ -123,6 +122,6 @@ export const SettingDialog: FC<SettingDialogTypes> = ({
           </Button>
         </DialogActions>
       </Dialog>
-    </Grid>
+    </>
   );
 };

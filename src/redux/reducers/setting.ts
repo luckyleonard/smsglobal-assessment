@@ -5,6 +5,7 @@ const initialState: SettingTypes = {
   apiKey: '',
   apiSecret: '',
   displayName: '',
+  hasSetting: false,
 };
 
 export default function settingReducer(

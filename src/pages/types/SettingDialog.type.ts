@@ -1,9 +1,9 @@
 import { ChangeEvent } from 'react';
-import { SettingTypes } from 'types/reduxTypes';
+import { SettingInputTypes } from './Setting.type';
 
 export type SettingDialogTypes = {
   openDialog: boolean;
-  apiSetting: SettingTypes;
+  apiSetting: SettingInputTypes;
   handleToggleOpen: () => void;
   handleApiChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };

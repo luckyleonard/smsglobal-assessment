@@ -1,12 +1,13 @@
 import React, { FC, ChangeEvent, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 import { SettingDialog, SettingCard } from './components';
-import { SettingTypes } from 'types/reduxTypes';
+import { SettingInputTypes } from 'pages/types/Setting.type';
 
 const Setting: FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
-  const [apiSetting, setApiSetting] = useState<SettingTypes>({
+  const [apiSetting, setApiSetting] = useState<SettingInputTypes>({
     apiKey: '',
     apiSecret: '',
     displayName: '',
@@ -29,13 +30,19 @@ const Setting: FC = () => {
 
   return (
     <Paper>
-      <SettingDialog
-        openDialog={openDialog}
-        apiSetting={apiSetting}
-        handleToggleOpen={handleToggleOpen}
-        handleApiChange={handleApiChange}
-      />
-      <SettingCard />
+      <Grid
+        container
+        direction='column'
+        alignItems='center'
+        style={{ height: 500 }}>
+        <SettingDialog
+          openDialog={openDialog}
+          apiSetting={apiSetting}
+          handleToggleOpen={handleToggleOpen}
+          handleApiChange={handleApiChange}
+        />
+        <SettingCard />
+      </Grid>
     </Paper>
   );
 };
