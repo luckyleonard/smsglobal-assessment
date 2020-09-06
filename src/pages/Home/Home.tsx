@@ -14,7 +14,7 @@ const Home: FC = () => {
         alignItems='center'
         justify='center'
         style={{ minHeight: 500 }}>
-        <Typography variant='h6'>Welcome to SMSGlobal!</Typography>
+        <Typography variant='h3'>Welcome to SMSGlobal!</Typography>
         <LinkToSetting />
       </Grid>
     </Paper>
