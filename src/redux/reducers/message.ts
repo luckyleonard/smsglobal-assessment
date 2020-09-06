@@ -40,7 +40,6 @@ export default function messageReducer(
       return {
         ...state,
         messageSummary: action.payload.response,
-        hasSent: action.payload.hasSent,
         error: action.payload.error,
       };
     case GET_MESSAGE_FAILED:

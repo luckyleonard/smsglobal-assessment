@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { getSetting } from './../selectors/index';
 import {
   sendMessageFail,
@@ -49,11 +49,11 @@ function* getMessagesWorker(action: ActionTypes): any {
 }
 
 function* sendMessageWatcher() {
-  yield takeEvery(SEND_MESSAGE_REQUESTED, sendMessageWorker);
+  yield takeLatest(SEND_MESSAGE_REQUESTED, sendMessageWorker);
 }
 
 function* getMessagesWatcher() {
-  yield takeEvery(GET_MESSAGE_REQUESTED, getMessagesWorker);
+  yield takeLatest(GET_MESSAGE_REQUESTED, getMessagesWorker);
 }
 
 export const messageSaga = [sendMessageWatcher(), getMessagesWatcher()];

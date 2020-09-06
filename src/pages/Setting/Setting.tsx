@@ -1,9 +1,12 @@
 import React, { FC, ChangeEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getSetting } from 'redux/selectors';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import { SettingDialog, SettingCard } from './components';
 import { SettingInputTypes } from 'pages/types/Setting.type';
+import { Typography } from '@material-ui/core';
 
 const Setting: FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -12,6 +15,7 @@ const Setting: FC = () => {
     apiSecret: '',
     displayName: '',
   });
+  const { hasSetting } = useSelector(getSetting);
 
   const handleApiChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
@@ -41,7 +45,13 @@ const Setting: FC = () => {
           handleToggleOpen={handleToggleOpen}
           handleApiChange={handleApiChange}
         />
-        <SettingCard />
+        {hasSetting ? (
+          <SettingCard />
+        ) : (
+          <Typography style={{ marginTop: 30 }}>
+            Please set your API key first
+          </Typography>
+        )}
       </Grid>
     </Paper>
   );

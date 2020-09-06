@@ -43,7 +43,6 @@ export const getMessageSuccess = (response: ResponseMessageType) => ({
   type: GET_MESSAGE_SUCCEEDED,
   payload: {
     response,
-    hasSent: true,
     error: null,
   },
 });
