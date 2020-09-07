@@ -1,7 +1,11 @@
 import { MessagesType } from 'types/response.type';
 
 export type countTypes = {
-  [key: string]: number;
+  total: number;
+  delivered: number;
+  sent: number;
+  scheduled: number;
+  undelivered: number;
 };
 
 export default function countMessages(
@@ -18,10 +22,10 @@ export default function countMessages(
   const filterPeriod = period * 3600 * 1000;
   const timeStampNow = new Date().getTime();
 
-  const filteredMessages = allMessages.filter((message) => {
+  const filteredMessages = allMessages.filter((message: MessagesType) => {
     const messageTimeStamp = new Date(message.dateTime).getTime();
     if (timeStampNow - messageTimeStamp < filterPeriod) {
-      count[message.status]++;
+      count[message.status as keyof countTypes]++;
       return true;
     }
     return false;
