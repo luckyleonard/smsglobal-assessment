@@ -13,7 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 
-import countMessages, { countTypes } from 'helpers/countMessage';
+import countMessages from 'helpers/countMessage';
 
 const ReportPeriod = [
   { name: '24 hours', value: 24 },
@@ -36,13 +36,7 @@ export const ReportCount: FC = () => {
   const [period, setPeriod] = useState(24);
   const allMessages = useSelector(getAllMessages);
 
-  let count: countTypes = {
-    total: 0,
-    delivered: 0,
-    sent: 0,
-    scheduled: 0,
-    undelivered: 0,
-  };
+  let count = null;
 
   if (allMessages) {
     count = { ...countMessages(allMessages, period) };
@@ -54,7 +48,7 @@ export const ReportCount: FC = () => {
 
   return (
     <>
-      {allMessages && count.total ? (
+      {allMessages && count ? (
         <>
           <FormControl className={classes.formControl}>
             <InputLabel id='report-period-label'>Period</InputLabel>
